@@ -24,10 +24,12 @@ jobs:
       - name: Compile processor
         run: |
           mkdir -p build
-          iverilog -g2012 -s risc_v_tb \
-            -o build/riscv_tb \
-            rtl/*.sv tb/risc_v_tb.sv
+         iverilog -g2012 -D GITHUB_ACTIONS -s risc_v_tb \
+  	-o build/riscv_tb \
+ 	 rtl/*.sv tb/risc_v_tb.sv
 
       - name: Run processor tests
         run: |
+	  cp programs/comprehensive_test.mem .
+
           vvp build/riscv_tb

@@ -1,80 +1,109 @@
-# RISC-V-Single-Cycle-Processor
+# RISC-V Single-Cycle Processor
 
-Implementation of 32-bit Single Cycle RISC-V Processor using System Verilog and verified via AMD Vivado
+A 32-bit RISC-V Single-Cycle Processor implemented using **SystemVerilog** and simulated using **AMD Vivado**.
 
+## Project Overview
 
+This project implements a simplified RV32I-based single-cycle processor. Each instruction is processed through the datapath in a single clock cycle.
 
+The processor includes instruction fetching, decoding, execution, memory access, and register writeback.
 
+## Architecture
 
-\# 32-bit Single-Cycle RISC-V Processor
+The processor consists of the following modules:
 
+| Module | Description |
+|---|---|
+| Program Counter | Holds the current instruction address |
+| Instruction Memory | Stores and supplies instructions |
+| Register File | Contains 32 general-purpose registers |
+| Immediate Generator | Generates I, S, B, U and J immediates |
+| Control Unit | Generates instruction control signals |
+| ALU | Performs arithmetic and logical operations |
+| Branch Unit | Evaluates branch conditions |
+| Data Memory | Handles load and store operations |
+| Writeback Mux | Selects the value written into the register file |
+| RISC-V Top | Integrates all processor modules |
 
+## Supported Instructions
 
-\## Project Overview
+### Arithmetic and Logical
+- ADD, SUB, ADDI
+- AND, OR, XOR
+- ANDI, ORI, XORI
 
-A 32-bit RISC-V processor designed using SystemVerilog and AMD Vivado 2026.1.
+### Shift
+- SLL, SRL, SRA
+- SLLI, SRLI, SRAI
 
+### Comparison
+- SLT, SLTU
+- SLTI, SLTIU
 
+### Memory
+- LB, LH, LW
+- LBU, LHU
+- SB, SH, SW
 
-\## Architecture
+### Branch
+- BEQ, BNE
+- BLT, BGE
+- BLTU, BGEU
 
+### Jump and Upper Immediate
+- JAL, JALR
+- LUI, AUIPC
 
+## Repository Structure
 
-The processor is organized into five logical sections:
+```text
+RISC-V-Single-Cycle-Processor/
+├── rtl/
+├── tb/
+├── programs/
+├── constraints/
+├── docs/
+├── scripts/
+├── vivado/
+├── README.md
+└── .gitignore
+```
 
+## Simulation and Verification
 
+The processor was simulated using AMD Vivado Behavioral Simulation.
 
-1\. IF - Instruction Fetch
+A comprehensive test program was created to verify arithmetic, logical, shift, comparison, memory, branch, jump, and upper-immediate instructions.
 
-2\. ID - Instruction Decode
+**Initial comprehensive simulation: ALL TESTS PASSED.**
 
-3\. EX - Execute
+## Tools Used
 
-4\. MA - Memory Access
+- SystemVerilog
+- AMD Vivado
+- Git
+- GitHub
 
-5\. WB - Write Back
+## Current Project Status
 
+-  Processor modules implemented
+-  Processor datapath integrated
+-  Control unit implemented
+-  Instruction memory initialized
+-  Comprehensive testbench created
+-  Initial simulation tests passed
+-  Project uploaded to GitHub
 
+##Further Possible Developments 
+-  Additional corner-case verification
+- FPGA implementation and hardware testing
 
-All five sections operate within a single clock cycle. This is a single-cycle processor, not a pipelined processor.
+## Scope and Limitations
 
+This is a simplified single-cycle implementation of a subset of RV32I. It does not currently implement the complete RISC-V privileged architecture, CSR instructions, exception handling, or compressed instructions.
 
+Misaligned memory accesses and their exception handling are not implemented.
 
-\## Tools Used
+## Author
 
-\- SystemVerilog
-
-\- AMD Vivado 2026.1
-
-\- Vivado XSim
-
-\- Git
-
-\- GitHub
-
-
-
-\## Repository Structure
-
-\- `rtl/` - Processor hardware design modules
-
-\- `tb/` - Simulation testbenches
-
-\- `programs/` - Test programs and instruction memory files
-
-\- `docs/` - Project documentation and waveforms
-
-\- `constraints/` - Constraint files, if needed
-
-\- `scripts/` - Automation scripts
-
-\- `vivado/` - Vivado project files
-
-
-
-\## Project Status
-
-Under development.
-
-
-
+Developed as a digital design and computer architecture project.

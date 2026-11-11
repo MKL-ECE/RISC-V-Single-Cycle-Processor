@@ -104,6 +104,6 @@ This is a simplified single-cycle implementation of a subset of RV32I. It does n
 
 Misaligned memory accesses and their exception handling are not implemented.
 
-## Author
+## Credits
 
 Developed as a digital design and computer architecture project.

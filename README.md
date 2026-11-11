@@ -94,7 +94,7 @@ A comprehensive test program was created to verify arithmetic, logical, shift, c
 -  Initial simulation tests passed
 -  Project uploaded to GitHub
 
-##Further Possible Developments 
+## Further Possible Developments 
 -  Additional corner-case verification
 - FPGA implementation and hardware testing
 

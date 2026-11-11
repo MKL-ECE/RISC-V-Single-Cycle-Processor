@@ -1,0 +1,33 @@
+
+name: RISC-V Processor Simulation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Compile processor
+        run: |
+          mkdir -p build
+          iverilog -g2012 -s risc_v_tb \
+            -o build/riscv_tb \
+            rtl/*.sv tb/risc_v_tb.sv
+
+      - name: Run processor tests
+        run: |
+          vvp build/riscv_tb
